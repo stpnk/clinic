@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Запись на прием к врачу{% endblock %}
+
+{% block content %}
+    <h2>Записаться на прием</h2>
+    {% for doctor in doctors %}
+        {{ doctor.name }} ({{ doctor.specialization }})<br>
+    {% endfor %}
+    <form method="post">{% csrf_token %}
+        {{ appointment_form }}<br>
+        <input type="submit" value="Записаться">
+    </form>
+
+{% endblock %}

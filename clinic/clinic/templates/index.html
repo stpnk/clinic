@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
 
 {% block title %}Запись на прием к врачу{% endblock %}
 
@@ -8,8 +9,9 @@
         {{ doctor.name }} ({{ doctor.specialization }})<br>
     {% endfor %}
     <form method="post">{% csrf_token %}
+        <span id="weekend"></span>
         {{ appointment_form }}<br>
         <input type="submit" value="Записаться">
     </form>
-
+    <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

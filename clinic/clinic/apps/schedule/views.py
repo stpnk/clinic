@@ -10,7 +10,6 @@ from django.forms.models import modelform_factory
 
 def index(request):
 
-    
     AppointmentForm = modelform_factory(
                             Appointment, 
                             fields=('doctor', 'name', 'date', 'time'),
@@ -42,10 +41,8 @@ def get_schedule(request, doctor, date):
 
     if request.is_ajax():
         doctor = doctor
-        
-        weekday = datetime.strptime(date, '%M-%d-%Y').weekday()-1 #wtf? разобраться со смещением!
-
-        date = datetime.strptime(date, '%M-%d-%Y').strftime('%Y-%M-%d')
+        weekday = (datetime.strptime(date, '%m-%d-%Y')).weekday()
+        date = datetime.strptime(date, '%m-%d-%Y')
 
         schedule = Appointment.objects.filter(doctor=doctor, date=date)
         schedule_time = []

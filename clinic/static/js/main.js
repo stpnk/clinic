@@ -3,8 +3,6 @@
 var year = $('#id_date_year').val(),
     time = $('#id_time').val()
 
-//$('#id_time').prop('disabled', true);
-
 
 $('#id_doctor, #id_date_month, #id_date_day, #id_date_year').change(function(){
 
@@ -20,11 +18,10 @@ $('#id_doctor, #id_date_month, #id_date_day, #id_date_year').change(function(){
             url:'get-schedule/' + doctor + '/' + date + '/'
         })
         .done(function(data){
-            //$('#id_time').prop('disabled', false);
             if (data.weekday === 5){
                 $('#weekend').text('Выходной день!')
                 $('#id_time').find('option').attr('disabled', 'disabled');   
-            } else if (data.weekday === -1){
+            } else if (data.weekday === 6){
                 $('#weekend').text('Выходной день!')
                 $('#id_time').find('option').attr('disabled', 'disabled');
             }

@@ -5,21 +5,21 @@
 
 {% block content %}
     <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">     
-    <h2>Записаться на прием</h2>
-    <h3>Список врачей</h3>
-    {% for doctor in doctors %}
-        {{ doctor.name }} ({{ doctor.specialization }})<br>
-    {% endfor %}<br>
-    <form method="post">{% csrf_token %}
-        <span class="text-info" id="weekend"></span><br><br>
-        {% for field in appointment_form %}
-        {{ field.label_tag }} {{ field }}{% if field.errors %}
-        <span class="text-danger">{{ field.errors }}{% endif %}</span><br><br>
-        {% endfor %}
-        <input type="submit" value="Записаться">
-    </form>
-    <script src="{% static 'js/main.js' %}"></script>
-    </div>
+        <div class="col-sm-6 col-sm-offset-3">     
+            <h2>Записаться на прием</h2>
+            <h3>Список врачей</h3>
+            {% for doctor in doctors %}
+                {{ doctor.name }} ({{ doctor.specialization }})<br>
+            {% endfor %}<br>
+            <form method="post">{% csrf_token %}
+                <span class="text-info" id="weekend"></span><br><br>
+                {% for field in appointment_form %}
+                {{ field.label_tag }} {{ field }}{% if field.errors %}
+                <span class="text-danger">{{ field.errors }}{% endif %}</span><br><br>
+                {% endfor %}
+                <input type="submit" value="Записаться">
+            </form>
+            <script src="{% static 'js/main.js' %}"></script>
+        </div>
     </div>
 {% endblock %}

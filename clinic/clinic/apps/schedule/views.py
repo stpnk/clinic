@@ -1,11 +1,11 @@
 import json
-import calendar
 from datetime import datetime, date
 from django.shortcuts import render
 from .models import Appointment, Doctor
-from django.http import HttpResponseRedirect, HttpResponse
-from django.forms.extras.widgets import SelectDateWidget
 from django.forms.models import modelform_factory
+from django.forms.extras.widgets import SelectDateWidget
+from django.http import HttpResponseRedirect, HttpResponse
+
 
 
 def index(request):
@@ -40,9 +40,8 @@ def appointment_success(request):
 def get_schedule(request, doctor, date):
 
     if request.is_ajax():
-        doctor = doctor
-        weekday = (datetime.strptime(date, '%m-%d-%Y')).weekday()
         date = datetime.strptime(date, '%m-%d-%Y')
+        weekday = date.weekday()
 
         schedule = Appointment.objects.filter(doctor=doctor, date=date)
         schedule_time = []

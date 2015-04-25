@@ -1,9 +1,5 @@
 
 
-var year = $('#id_date_year').val(),
-    time = $('#id_time').val()
-
-
 $('#id_doctor, #id_date_month, #id_date_day, #id_date_year').change(function(){
 
     $('#weekend').text('')
